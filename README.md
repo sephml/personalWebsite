@@ -2,10 +2,6 @@
   Portfolio Website - v2.0<br/>
   <a href="https://sepehr.uk/" target="_blank">Sepehr.uk</a>
 </h2>
-<div align="center">
-  <img alt="Demo" src="./Images/readme-img1.png" />
-</div>
-
 <br/>
 
 <center>
@@ -31,7 +27,7 @@ You can fork this repo to modify and make changes of your own. Please give me pr
 
 ## Built With
 
-My personal portfolio <a href="https://soumyajit.vercel.app/" target="_blank">soumyajit.tech</a> which features some of my github projects as well as my resume and technical skills.<br/>
+My personal portfolio Creadits to <a href="https://soumyajit.vercel.app/" target="_blank">soumyajit.tech</a> for designing and developing and myself for customising his work for my purpose<br/>
 
 This project was built using these technologies.
 
@@ -40,7 +36,6 @@ This project was built using these technologies.
 - Express.js
 - CSS3
 - VsCode
-- Vercel
 
 ## Features
 
@@ -68,9 +63,3 @@ The page will reload if you make edits.
 
 Open the project folder and Navigate to `/src/components/`. <br/>
 You will find all the components used and you can edit your information accordingly.
-
-### Show your support
-
-Give a ⭐ if you like this website!
-
-<a href="https://www.buymeacoffee.com/soumyajit4419" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-violet.png" alt="Buy Me A Coffee" height= "60px" width= "217px" ></a>
