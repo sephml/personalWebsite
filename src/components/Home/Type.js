@@ -9,7 +9,7 @@ function Type() {
           "ML Engineer",
           "Deep Learning Enthusiast",
           "Data Scientist",
-          "Kaggle contributor",
+          "Kaggle Contributor",
         ],
         autoStart: true,
         loop: true,
