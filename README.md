@@ -11,7 +11,7 @@
 [![forthebadge](https://forthebadge.com/images/badges/open-source.svg)](https://forthebadge.com) &nbsp;
 ![GitHub Repo stars](https://img.shields.io/github/stars/soumyajit4419/Portfolio?color=red&logo=github&style=for-the-badge) &nbsp;
 ![GitHub forks](https://img.shields.io/github/forks/soumyajit4419/Portfolio?color=red&logo=github&style=for-the-badge)
-
+[![Netlify Status](https://api.netlify.com/api/v1/badges/60453082-5aac-4675-9d0b-44a4bf7c44b9/deploy-status)](https://app.netlify.com/sites/thisissepehr/deploys)
 </center>
 
 <h3 align="center">
