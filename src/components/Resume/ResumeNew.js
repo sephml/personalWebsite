@@ -35,7 +35,7 @@ function ResumeNew() {
            >
             <Page pageNumber={pageNumber} scale={width > 786 ? 1.7 : 0.6} />
           </Document> */}
-          <PDFObject url={pdf} height= "75rem" pdfOpenParams= "FitBV,left"/>
+          <PDFObject url={pdf} height= "75rem" pdfOpenParams= "FitB,left"/>
          
           
 
