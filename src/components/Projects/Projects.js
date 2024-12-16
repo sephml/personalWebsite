@@ -7,6 +7,7 @@ import mcts from "../../Assets/Projects/mcts.png";
 import vision from "../../Assets/Projects/CNN.png";
 import search from "../../Assets/Projects/searchengine.png";
 import nlp from "../../Assets/Projects/nlp.jpg";
+import ai_assistant from "../../Assets/Projects/ai_assistant.png"
 
 function Projects() {
   return (
@@ -20,6 +21,18 @@ function Projects() {
           Here are a few projects I've worked on recently.
         </p>
         <Row style={{ justifyContent: "center", paddingBottom: "10px" }}>
+        <Col md={4} className="project-card">
+            <ProjectCard
+              imgPath={ai_assistant}
+              isBlog={false}
+              title="AI Planning assistant"
+              description="Developed an intelligent conversational AI assistant leveraging OpenAI's
+               GPT-4 API and Pinecone for vector-based memory and RAG retrieval. Implemented using Python Flask and LangChain, with integrations for API communication,
+                database management, and microservice architecture"
+              
+            />
+          </Col>
+          
           <Col md={4} className="project-card">
             <ProjectCard
               imgPath={search}
