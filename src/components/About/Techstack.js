@@ -19,61 +19,44 @@ import {
   SiNumpy,
   SiPandas,
   SiSpacy,
+} from "react-icons/si";
 
-} from "react-icons/si"
-
+// Tech stack data array
+const techStackData = [
+  { icon: DiPython, name: "Python" },
+  { icon: CgCPlusPlus, name: "C++" },
+  { icon: DiJavascript1, name: "JavaScript" },
+  { icon: SiPytorch, name: "PyTorch" },
+  { icon: SiTensorflow, name: "TensorFlow" },
+  { icon: SiScikitlearn, name: "Scikit-learn" },
+  { icon: SiKeras, name: "Keras" },
+  { icon: SiDocker, name: "Docker" },
+  { icon: SiNumpy, name: "NumPy" },
+  { icon: SiPandas, name: "Pandas" },
+  { icon: SiSpacy, name: "spaCy" },
+  { icon: SiDjango, name: "Django" },
+  { icon: DiNodejs, name: "Node.js" },
+  { icon: DiReact, name: "React" },
+  { icon: DiMongodb, name: "MongoDB" },
+  { icon: DiGit, name: "Git" },
+];
 
 function Techstack() {
   return (
     <Row style={{ justifyContent: "center", paddingBottom: "50px" }}>
-      <Col xs={4} md={2} className="tech-icons">
-        <DiPython />
-      </Col>
-      <Col xs={4} md={2} className="tech-icons">
-        <CgCPlusPlus />
-      </Col>
-      <Col xs={4} md={2} className="tech-icons">
-        <DiJavascript1 />
-      </Col>
-      <Col xs={4} md={2} className="tech-icons">
-        <SiPytorch />
-      </Col>
-      <Col xs={4} md={2} className="tech-icons">
-        <SiTensorflow />
-      </Col>
-      <Col xs={4} md={2} className="tech-icons">
-        <SiScikitlearn />
-      </Col>
-      <Col xs={4} md={2} className="tech-icons">
-        <SiKeras />
-      </Col>
-      <Col xs={4} md={2} className="tech-icons">
-        <SiDocker />
-      </Col>
-      <Col xs={4} md={2} className="tech-icons">
-        <SiNumpy />
-      </Col>
-      <Col xs={4} md={2} className="tech-icons">
-        <SiPandas />
-      </Col>
-      <Col xs={4} md={2} className="tech-icons">
-        <SiSpacy />
-      </Col>
-      <Col xs={4} md={2} className="tech-icons">
-        <SiDjango />
-      </Col>
-      <Col xs={4} md={2} className="tech-icons">
-        <DiNodejs />
-      </Col>
-      <Col xs={4} md={2} className="tech-icons">
-        <DiReact />
-      </Col>
-      <Col xs={4} md={2} className="tech-icons">
-        <DiMongodb />
-      </Col>
-      <Col xs={4} md={2} className="tech-icons">
-        <DiGit />
-      </Col>
+      {techStackData.map((tech, index) => {
+        const IconComponent = tech.icon;
+        return (
+          <Col xs={4} md={2} className="tech-icons" key={index}>
+            <div style={{ textAlign: "center" }}>
+              <IconComponent />
+              <p style={{ fontSize: "12px", marginTop: "8px", marginBottom: "0" }}>
+                {tech.name}
+              </p>
+            </div>
+          </Col>
+        );
+      })}
     </Row>
   );
 }

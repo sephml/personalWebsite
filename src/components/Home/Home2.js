@@ -20,35 +20,14 @@ function Home2() {
             </h1>
             <p className="home-about-body">
               I fell in love with training models to make wiser decisions and the rest is history I guess... 🤷‍♂️
-              <br />
-              <br />I am fluent in some programming languages like
-              <i>
-                <b className="purple"> C++, Javascript and Python. </b>
-              </i>
-              <br />
-              <br />
-              My field of Interest's are building new &nbsp;
-              <i>
-                <b className="purple">NLP models</b> and
-                research in that area.
-                {/* {" "} */}
-                {/* <b className="purple">
-                  Blockchain.
-                </b> */}
-              </i>
-              <br />
-              <br />
-              Whenever possible, I also apply my passion for developing new ideas that can potentially take off as <b className="purple">Stratups</b> and
-              <i>
-                <b className="purple">
-                  {" "}
-                  Travel and play video games
-                </b>
-              </i>
-              {/* &nbsp; like */}
-              {/* <i>
-                <b className="purple"> React.js and Next.js</b>
-              </i> */}
+              <br/>
+              I am fluent in some programming languages like <b className="purple">C++, Javascript and Python.</b>
+              <br/>
+              <br/>
+              My fields of Interest are building new <b className="purple">ML models</b> and research in that area particulalrly in the field of <b className="purple">Large Language Models</b>.
+              <br/>
+              <br/>
+              Whenever possible, I also apply my passion for developing new ideas that can potentially take off as <b className="purple">Startups</b> and <b className="purple">travel and play video games</b>
             </p>
           </Col>
           <Col md={4} className="myAvtar">
@@ -73,17 +52,7 @@ function Home2() {
                 >
                   <AiFillGithub />
                 </a>
-              </li>
-              {/* <li className="social-icons">
-                <a
-                  href=""
-                  target="_blank"
-                  rel="noreferrer"
-                  className="icon-colour  home-social-icons"
-                >
-                  <AiOutlineTwitter />
-                </a>
-              </li> */}
+              </li>  
               <li className="social-icons">
                 <a
                   href="https://www.linkedin.com/in/amirsepehr-aminian/"
@@ -94,16 +63,7 @@ function Home2() {
                   <FaLinkedinIn />
                 </a>
               </li>
-              <li className="social-icons">
-                <a
-                  href="https://www.instagram.com/astrosepehr"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="icon-colour home-social-icons"
-                >
-                  <AiFillInstagram />
-                </a>
-              </li>
+              
             </ul>
           </Col>
         </Row>
