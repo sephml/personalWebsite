@@ -1,6 +1,5 @@
 import React from "react";
-import { Container, Row, Col, Card, Button } from "react-bootstrap";
-import ProjectCard from "./ProjectCards";
+import { Container, Row, Col, Button } from "react-bootstrap";
 import Particle from "../Particle";
 import frozen from "../../Assets/Projects/deepq.png";
 import mcts from "../../Assets/Projects/mcts.png";
