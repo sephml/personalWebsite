@@ -13,10 +13,6 @@ function Experience() {
       date: "2026 - Present",
       type: "work",
       description: [
-        "Developed and deployed production-ready AI solutions using Large Language Models",
-        "Implemented microservices architecture for AI applications with Flask and FastAPI",
-        "Optimized model performance achieving 40% improvement in response accuracy",
-        "Collaborated with cross-functional teams to integrate AI features into existing products"
       ]
     },{
       title: "Software consultant - Assistant Manager",
