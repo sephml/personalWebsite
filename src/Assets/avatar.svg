@@ -18,8 +18,8 @@
                 <mask id="mask-2" fill="white">
                     <use xlink:href="#path-1"></use>
                 </mask>
-                <use id="Circle-Background" fill="#972dc2" xlink:href="#path-1"></use>
-                <g id="🖍-Circle-Color" mask="url(#mask-2)" fill="#8a4ca8">
+                <use id="Circle-Background" fill="#06b6d4" xlink:href="#path-1"></use>
+                <g id="🖍-Circle-Color" mask="url(#mask-2)" fill="#0ea5e9">
                     <rect id="🖍Color" x="0" y="0" width="216.445361" height="216"></rect>
                 </g>
             </g>
@@ -45,7 +45,7 @@
                         <use xlink:href="#path-7"></use>
                     </mask>
                     <use id="Hoodie" fill="#B7C1DB" fill-rule="evenodd" xlink:href="#path-7"></use>
-                    <g id="Color/Palette/Slate" mask="url(#mask-8)" fill="#293347" fill-rule="evenodd">
+                    <g id="Color/Palette/DarkGreen" mask="url(#mask-8)" fill="#065f46" fill-rule="evenodd">
                         <rect id="🖍Color" x="0" y="0" width="238.490722" height="99"></rect>
                     </g>
                     <path d="M91.7997922,55.5650565 L91.8,99 L85.5,99 L85.4989717,52.3346251 C87.4825877,53.5136414 89.5915786,54.5944735 91.7997922,55.5650565 Z M152.101479,52.334357 L152.1,88.65 C152.1,90.389697 150.689697,91.8 148.95,91.8 C147.210303,91.8 145.8,90.389697 145.8,88.65 L145.80121,55.5646162 C148.009227,54.594073 150.118032,53.5132992 152.101479,52.334357 Z" id="Straps" fill="#F4F4F4" fill-rule="evenodd" mask="url(#mask-8)"></path>
@@ -68,9 +68,59 @@
                     <g id="Nose/Default" transform="translate(25.200000, 36.000000)" fill="#000000" fill-opacity="0.16">
                         <path d="M14.4,7.2 C14.4,11.1764502 19.2353247,14.4 25.2,14.4 L25.2,14.4 C31.1646753,14.4 36,11.1764502 36,7.2" id="Nose"></path>
                     </g>
-                    <g id="Eyes/Happy-😁" transform="translate(0.000000, 7.200000)" fill="#000000" fill-opacity="0.599999964">
-                        <path d="M14.5441507,20.2025804 C16.2060084,16.7836572 19.9479802,14.4 24.2978223,14.4 C28.6323089,14.4 32.3632095,16.7668578 34.0338166,20.1664118 C34.5300845,21.1762779 33.8238934,22.0027335 33.1115463,21.3903205 C30.9055557,19.493805 27.7728447,18.3094095 24.2978223,18.3094095 C20.9314855,18.3094095 17.8863826,19.4208767 15.6937852,21.2144771 C14.8921136,21.8702649 14.0580911,21.202546 14.5441507,20.2025804 Z" id="Squint"></path>
-                        <path d="M66.7441507,20.2025804 C68.4060084,16.7836572 72.1479802,14.4 76.4978223,14.4 C80.8323089,14.4 84.5632095,16.7668578 86.2338166,20.1664118 C86.7300845,21.1762779 86.0238934,22.0027335 85.3115463,21.3903205 C83.1055557,19.493805 79.9728447,18.3094095 76.4978223,18.3094095 C73.1314855,18.3094095 70.0863826,19.4208767 67.8937852,21.2144771 C67.0921136,21.8702649 66.2580911,21.202546 66.7441507,20.2025804 Z" id="Squint"></path>
+                    <g id="Eyes/Open" transform="translate(0.000000, 7.200000)" fill="#000000">
+                        <!-- Left Eye (stays open) -->
+                        <circle cx="24" cy="22" r="7" fill="#000000"/>
+                        <circle cx="24" cy="20" r="3" fill="#FFFFFF" opacity="0.8"/>
+                        
+                        <!-- Right Eye (winking) -->
+                        <g id="Right-Eye-Group">
+                            <!-- Open eye -->
+                            <g opacity="1">
+                                <circle cx="76" cy="22" r="7" fill="#000000">
+                                    <animate attributeName="opacity" 
+                                             values="1;1;1;1;0;1;1;1;1;1" 
+                                             dur="5s" 
+                                             repeatCount="indefinite"/>
+                                </circle>
+                                <circle cx="76" cy="20" r="3" fill="#FFFFFF" opacity="0.8">
+                                    <animate attributeName="opacity" 
+                                             values="0.8;0.8;0.8;0.8;0;0.8;0.8;0.8;0.8;0.8" 
+                                             dur="5s" 
+                                             repeatCount="indefinite"/>
+                                </circle>
+                            </g>
+                            
+                            <!-- Closed eye (wink) -->
+                            <path d="M69,22 Q76,25 83,22" stroke="#000000" stroke-width="3" stroke-linecap="round" fill="none" opacity="0">
+                                <animate attributeName="opacity" 
+                                         values="0;0;0;0;1;0;0;0;0;0" 
+                                         dur="5s" 
+                                         repeatCount="indefinite"/>
+                            </path>
+                        </g>
+                        
+                        <!-- Round Glasses -->
+                        <g id="Glasses" stroke="#2c3e50" stroke-width="2.5" fill="none">
+                            <!-- Left Frame -->
+                            <circle cx="24" cy="22" r="13"/>
+                            
+                            <!-- Right Frame -->
+                            <circle cx="76" cy="22" r="13"/>
+                            
+                            <!-- Bridge connecting the frames -->
+                            <line x1="37" y1="22" x2="63" y2="22" stroke-linecap="round"/>
+                            
+                            <!-- Left temple (arm) -->
+                            <path d="M 11,22 L 2,20" stroke-linecap="round"/>
+                            
+                            <!-- Right temple (arm) -->
+                            <path d="M 89,22 L 98,20" stroke-linecap="round"/>
+                            
+                            <!-- Subtle lens reflections -->
+                            <ellipse cx="20" cy="18" rx="3" ry="4" fill="#FFFFFF" opacity="0.3" stroke="none"/>
+                            <ellipse cx="72" cy="18" rx="3" ry="4" fill="#FFFFFF" opacity="0.3" stroke="none"/>
+                        </g>
                     </g>
                     <g id="Eyebrow/Natural/Default-Natural" fill="#000000" fill-opacity="0.599999964">
                         <path d="M23.4351841,5.58911128 C18.2497998,6.28511594 10.1636382,10.8047231 10.839834,16.03603 C10.8620533,16.2072489 11.1210572,16.2606121 11.2328169,16.1176444 C13.4706637,13.2483016 30.7735176,9.03289328 37.0748406,9.91324359 C37.6515471,9.99400182 38.0322596,9.39873091 37.6389451,9.02718599 C34.2689096,5.84536884 28.0803412,4.96102342 23.4351841,5.58911128" id="Eyebrow" transform="translate(24.300000, 10.800000) rotate(5.000000) translate(-24.300000, -10.800000) "></path>
@@ -87,9 +137,9 @@
                             <mask id="mask-14" fill="white">
                                 <use xlink:href="#path-13"></use>
                             </mask>
-                            <use id="Short-Hair" stroke="none" fill="#1F3140" fill-rule="evenodd" xlink:href="#path-13"></use>
-                            <g id="Color/Hair/Brown-Dark" stroke="none" fill="none" mask="url(#mask-14)" fill-rule="evenodd">
-                                <g transform="translate(-43.100000, -15.000000)" fill="#4A312C" id="Color">
+                            <use id="Short-Hair" stroke="none" fill="#000000" fill-rule="evenodd" xlink:href="#path-13"></use>
+                            <g id="Color/Hair/Black" stroke="none" fill="none" mask="url(#mask-14)" fill-rule="evenodd">
+                                <g transform="translate(-43.100000, -15.000000)" fill="#1a1a1a" id="Color">
                                     <rect x="0" y="0" width="239.106977" height="252.406452"></rect>
                                 </g>
                             </g>

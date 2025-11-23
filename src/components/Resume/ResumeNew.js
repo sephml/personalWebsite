@@ -1,11 +1,8 @@
-import React, { useState } from "react";
-import { Container, Row } from "react-bootstrap";
-import Button from "react-bootstrap/Button";
+import React, { useState, useRef, useEffect } from "react";
 import Particle from "../Particle";
-import pdf from "../../Assets/../Assets/Sep_Aminian_CV.pdf";
+import pdf from "../../Assets/Sep_Aminian_CV.pdf";
 import { AiOutlineDownload } from "react-icons/ai";
 import { Document, Page, pdfjs } from 'react-pdf';
-import { useRef, useEffect } from "react";
 
 // Set up PDF.js worker
 pdfjs.GlobalWorkerOptions.workerSrc = new URL(
@@ -15,7 +12,7 @@ pdfjs.GlobalWorkerOptions.workerSrc = new URL(
 
 function ResumeNew() {
   const [numPages, setNumPages] = useState(null);
-  const [pageWidth, setPageWidth] = useState(600); // default width
+  const [pageWidth, setPageWidth] = useState(600);
   const containerRef = useRef(null);
 
   function onDocumentLoadSuccess({ numPages }) {
@@ -27,7 +24,7 @@ function ResumeNew() {
     function handleResize() {
       if (containerRef.current) {
         const width = containerRef.current.offsetWidth;
-        setPageWidth(width > 600 ? 600 : width - 16); // 600px max, with some padding
+        setPageWidth(width > 600 ? 600 : width - 16);
       }
     }
     handleResize();
@@ -36,55 +33,61 @@ function ResumeNew() {
   }, []);
 
   return (
-    <div>
-      <Container fluid className="resume-section">
-        <Particle />
-        <Row className="justify-content-center" style={{ position: "relative", zIndex: 2 }}>
-          <Button
-            variant="primary"
+    <div className="relative min-h-screen py-20">
+      <Particle />
+      
+      <div className="container-custom relative z-10">
+        <div className="text-center mb-12 animate-fade-in">
+          <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
+            My <span className="gradient-text">Resume</span>
+          </h1>
+          
+          <a
             href={pdf}
             target="_blank"
-            className="w-100 w-md-auto mb-3"
-            style={{ maxWidth: "250px" }}
+            rel="noopener noreferrer"
+            className="btn-primary inline-flex items-center gap-2"
           >
-            <AiOutlineDownload />
-            &nbsp;Download CV
-          </Button>
-        </Row>
+            <AiOutlineDownload className="text-xl" />
+            Download CV
+          </a>
+        </div>
 
-        <section className="resume" ref={containerRef}>
+        <div ref={containerRef} className="flex flex-col items-center gap-6">
           <Document
             file={pdf}
-            pageLayout="oneColumn"
             onLoadSuccess={onDocumentLoadSuccess}
-            className="resume-doc-display justify-content-center"
+            className="flex flex-col items-center gap-6"
           >
             {Array.from(new Array(numPages), (el, index) => (
-              <Page
+              <div 
                 key={`page_${index + 1}`}
-                pageNumber={index + 1}
-                width={pageWidth}
-                className="page-resume"
-                renderAnnotationLayer={false}
-                renderTextLayer={false}
-              />
+                className="glass-effect p-4 rounded-xl shadow-2xl"
+              >
+                <Page
+                  pageNumber={index + 1}
+                  width={pageWidth}
+                  renderAnnotationLayer={false}
+                  renderTextLayer={false}
+                  className="rounded-lg overflow-hidden"
+                />
+              </div>
             ))}
           </Document>
-        </section>
+        </div>
 
-        <Row className="justify-content-center" style={{ position: "relative", zIndex: "2"}}>
-          <Button
-            variant="primary"
+        <div className="text-center mt-12">
+          <a
             href={pdf}
             target="_blank"
-            className="w-100 w-md-auto mt-3"
-            style={{ maxWidth: "250px" }}
+            rel="noopener noreferrer"
+            className="btn-primary inline-flex items-center gap-2"
           >
-            <AiOutlineDownload />
-            &nbsp;Download CV
-          </Button>
-        </Row>
-      </Container>
+            <AiOutlineDownload className="text-xl" />
+            Download CV
+          </a>
+        </div>
+      </div>
     </div>
   );
 }
