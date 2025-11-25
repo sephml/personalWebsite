@@ -11,8 +11,8 @@ function ResumeNew() {
   const [pageWidth, setPageWidth] = useState(600);
   const containerRef = useRef(null);
   
-  // Reference PDF from public folder for proper deployment
-  const pdf = `${process.env.PUBLIC_URL}/Sep_Aminian_CV.pdf`;
+  // Reference PDF from public folder - works for both dev and production deployment
+  const pdf = `${import.meta.env.BASE_URL}Sep_Aminian_CV.pdf`;
 
   function onDocumentLoadSuccess({ numPages }) {
     setNumPages(numPages);
