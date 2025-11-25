@@ -1,19 +1,18 @@
 import React, { useState, useRef, useEffect } from "react";
 import Particle from "../Particle";
-import pdf from "../../Assets/Sep_Aminian_CV.pdf";
 import { AiOutlineDownload } from "react-icons/ai";
 import { Document, Page, pdfjs } from 'react-pdf';
 
-// Set up PDF.js worker
-pdfjs.GlobalWorkerOptions.workerSrc = new URL(
-  'pdfjs-dist/build/pdf.worker.min.mjs',
-  import.meta.url,
-).toString();
+// Set up PDF.js worker - use CDN for better compatibility with AWS Amplify
+pdfjs.GlobalWorkerOptions.workerSrc = `https://unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.mjs`;
 
 function ResumeNew() {
   const [numPages, setNumPages] = useState(null);
   const [pageWidth, setPageWidth] = useState(600);
   const containerRef = useRef(null);
+  
+  // Reference PDF from public folder for proper deployment
+  const pdf = `${process.env.PUBLIC_URL}/Sep_Aminian_CV.pdf`;
 
   function onDocumentLoadSuccess({ numPages }) {
     setNumPages(numPages);
