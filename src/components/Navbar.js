@@ -4,6 +4,7 @@ import {
   AiOutlineHome,
   AiOutlineFundProjectionScreen,
   AiOutlineUser,
+  AiFillLock,
 } from "react-icons/ai";
 import { CgFileDocument } from "react-icons/cg";
 import { MdWorkOutline } from "react-icons/md";
@@ -33,6 +34,7 @@ function NavBar() {
     { name: "Experience", path: "/experience", icon: MdWorkOutline },
     { name: "Projects", path: "/project", icon: AiOutlineFundProjectionScreen },
     { name: "Resume", path: "/resume", icon: CgFileDocument },
+    { name: "Private", path: "/private", icon: AiFillLock },
   ];
 
   const isActive = (path) => location.pathname === path;
