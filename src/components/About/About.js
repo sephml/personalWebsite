@@ -48,7 +48,7 @@ function About() {
               { label: "Education", value: "MSc AI · Queen Mary (Distinction)" },
               { label: "Specialisation", value: "LLMs & Production AI" },
               { label: "Languages", value: "Python · C++ · JavaScript" },
-              { label: "Status", value: "Open to opportunities", highlight: true },
+              { label: "Status", value: "Building Something Cool", highlight: true },
             ].map(({ label, value, highlight }) => (
               <div
                 key={label}
