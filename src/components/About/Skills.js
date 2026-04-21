@@ -21,103 +21,117 @@ import {
   SiOpenai,
 } from "react-icons/si";
 
+const skillCategories = [
+  {
+    title: "Languages & Core",
+    skills: [
+      { icon: DiPython, name: "Python" },
+      { icon: CgCPlusPlus, name: "C++" },
+      { icon: DiJavascript1, name: "JavaScript" },
+    ],
+  },
+  {
+    title: "ML / Deep Learning",
+    skills: [
+      { icon: SiPytorch, name: "PyTorch" },
+      { icon: SiTensorflow, name: "TensorFlow" },
+      { icon: SiKeras, name: "Keras" },
+      { icon: SiScikitlearn, name: "Scikit-learn" },
+    ],
+  },
+  {
+    title: "NLP & LLMs",
+    skills: [
+      { icon: SiOpenai, name: "OpenAI API" },
+      { icon: SiSpacy, name: "spaCy" },
+      { icon: SiNumpy, name: "Transformers" },
+    ],
+  },
+  {
+    title: "Data Science",
+    skills: [
+      { icon: SiNumpy, name: "NumPy" },
+      { icon: SiPandas, name: "Pandas" },
+    ],
+  },
+  {
+    title: "Web & Backend",
+    skills: [
+      { icon: SiDjango, name: "Django" },
+      { icon: DiNodejs, name: "Node.js" },
+      { icon: DiReact, name: "React" },
+      { icon: DiMongodb, name: "MongoDB" },
+    ],
+  },
+  {
+    title: "DevOps",
+    skills: [
+      { icon: SiDocker, name: "Docker" },
+      { icon: DiGit, name: "Git" },
+    ],
+  },
+];
+
+const SkillIcon = ({ icon: Icon, name }) => (
+  <div
+    style={{
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
+      gap: "8px",
+      padding: "18px 12px",
+      background: "#161616",
+      border: "1px solid #252525",
+      borderRadius: "10px",
+      transition: "all 0.2s ease",
+      cursor: "default",
+    }}
+    onMouseEnter={(e) => {
+      e.currentTarget.style.borderColor = "rgba(16,185,129,0.3)";
+      e.currentTarget.style.background = "#1a1a1a";
+      e.currentTarget.querySelector("svg").style.color = "#10b981";
+    }}
+    onMouseLeave={(e) => {
+      e.currentTarget.style.borderColor = "#252525";
+      e.currentTarget.style.background = "#161616";
+      e.currentTarget.querySelector("svg").style.color = "#555555";
+    }}
+  >
+    <Icon style={{ fontSize: "2rem", color: "#555555", transition: "color 0.2s" }} />
+    <span style={{ fontSize: "0.72rem", color: "#666666", fontWeight: 500, textAlign: "center", fontFamily: "'JetBrains Mono', monospace" }}>
+      {name}
+    </span>
+  </div>
+);
+
 function Skills() {
-  const skillCategories = [
-    {
-      title: "Languages & Core",
-      level: "Expert",
-      skills: [
-        { icon: DiPython, name: "Python" },
-        { icon: CgCPlusPlus, name: "C++" },
-        { icon: DiJavascript1, name: "JavaScript" },
-      ]
-    },
-    {
-      title: "ML/DL Frameworks",
-      level: "Expert",
-      skills: [
-        { icon: SiPytorch, name: "PyTorch" },
-        { icon: SiTensorflow, name: "TensorFlow" },
-        { icon: SiKeras, name: "Keras" },
-        { icon: SiScikitlearn, name: "Scikit-learn" },
-      ]
-    },
-    {
-      title: "NLP & LLMs",
-      level: "Expert",
-      skills: [
-        { icon: SiOpenai, name: "OpenAI API" },
-        { icon: SiSpacy, name: "spaCy" },
-        { icon: SiNumpy, name: "Transformers" },
-      ]
-    },
-    {
-      title: "Data Science",
-      level: "Proficient",
-      skills: [
-        { icon: SiNumpy, name: "NumPy" },
-        { icon: SiPandas, name: "Pandas" },
-      ]
-    },
-    {
-      title: "Web & Backend",
-      level: "Proficient",
-      skills: [
-        { icon: SiDjango, name: "Django" },
-        { icon: DiNodejs, name: "Node.js" },
-        { icon: DiReact, name: "React" },
-        { icon: DiMongodb, name: "MongoDB" },
-      ]
-    },
-    {
-      title: "DevOps & Tools",
-      level: "Proficient",
-      skills: [
-        { icon: SiDocker, name: "Docker" },
-        { icon: DiGit, name: "Git" },
-      ]
-    }
-  ];
-
-  const getLevelColor = (level) => {
-    switch(level) {
-      case "Expert":
-        return "text-blue-400 border-blue-400 bg-blue-500/10";
-      case "Proficient":
-        return "text-purple-400 border-purple-400 bg-purple-500/10";
-      default:
-        return "text-gray-400 border-gray-400 bg-gray-500/10";
-    }
-  };
-
   return (
-    <div className="space-y-12">
-      {skillCategories.map((category, catIndex) => (
-        <div key={catIndex} className="animate-slide-up">
-          <div className="text-center mb-6">
-            <h2 className="text-2xl md:text-3xl font-bold text-white mb-3">
-              {category.title}
-            </h2>
-            <span className={`inline-block px-4 py-2 rounded-full font-semibold border-2 ${getLevelColor(category.level)}`}>
-              {category.level}
-            </span>
+    <div style={{ display: "flex", flexDirection: "column", gap: "40px" }}>
+      {skillCategories.map((category) => (
+        <div key={category.title}>
+          <div
+            style={{
+              fontSize: "0.75rem",
+              fontFamily: "'JetBrains Mono', monospace",
+              color: "#555555",
+              letterSpacing: "0.12em",
+              textTransform: "uppercase",
+              marginBottom: "14px",
+              paddingLeft: "2px",
+            }}
+          >
+            {category.title}
           </div>
-          
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
-            {category.skills.map((skill, index) => {
-              const IconComponent = skill.icon;
-              return (
-                <div
-                  key={index}
-                  className="glass-effect p-6 flex flex-col items-center justify-center gap-3 hover:scale-110 hover:shadow-lg hover:shadow-cyan-500/30 transition-all duration-300 group"
-                >
-                  <IconComponent className="text-5xl text-cyan-400 group-hover:text-blue-400 transition-colors duration-300" />
-                  <p className="text-sm text-gray-300 font-medium text-center">
-                    {skill.name}
-                  </p>
-                </div>
-              );
-            })}
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fill, minmax(90px, 1fr))",
+              gap: "8px",
+            }}
+          >
+            {category.skills.map((skill) => (
+              <SkillIcon key={skill.name} icon={skill.icon} name={skill.name} />
+            ))}
           </div>
         </div>
       ))}
@@ -126,4 +140,3 @@ function Skills() {
 }
 
 export default Skills;
-

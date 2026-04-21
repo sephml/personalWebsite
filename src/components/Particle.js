@@ -1,55 +1,51 @@
-import React from "react";
-import Particles from "react-tsparticles";
+import { useEffect, useState, useMemo } from "react";
+import Particles, { initParticlesEngine } from "@tsparticles/react";
+import { loadSlim } from "@tsparticles/slim";
 
 function Particle() {
+  const [init, setInit] = useState(false);
+
+  useEffect(() => {
+    initParticlesEngine(async (engine) => {
+      await loadSlim(engine);
+    }).then(() => setInit(true));
+  }, []);
+
+  const options = useMemo(() => ({
+    background: { color: { value: "transparent" } },
+    fpsLimit: 60,
+    particles: {
+      color: { value: "#10b981" },
+      number: { value: 55, density: { enable: true, area: 900 } },
+      links: {
+        enable: true,
+        color: "#10b981",
+        distance: 130,
+        opacity: 0.12,
+        width: 1,
+      },
+      move: {
+        direction: "none",
+        enable: true,
+        outModes: { default: "bounce" },
+        random: true,
+        speed: 0.5,
+        straight: false,
+      },
+      opacity: {
+        value: { min: 0.2, max: 0.5 },
+        animation: { enable: true, speed: 0.5, sync: false },
+      },
+      size: { value: { min: 1, max: 2.5 } },
+    },
+    detectRetina: true,
+  }), []);
+
+  if (!init) return null;
+
   return (
-    <div style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", zIndex: 1 }}>
-      <Particles
-        id="tsparticles"
-        params={{
-          particles: {
-            number: {
-              value: 160,
-              density: {
-                enable: true,
-                value_area: 1500,
-              },
-            },
-            line_linked: {
-              enable: false,
-              opacity: 0.03,
-            },
-            move: {
-              direction: "right",
-              speed: 0.05,
-            },
-            size: {
-              value: 1,
-            },
-            opacity: {
-              anim: {
-                enable: true,
-                speed: 1,
-                opacity_min: 0.05,
-              },
-            },
-          },
-          interactivity: {
-            events: {
-              onclick: {
-                enable: true,
-                mode: "push",
-              },
-            },
-            modes: {
-              push: {
-                particles_nb: 1,
-              },
-            },
-          },
-          retina_detect: true,
-        }}
-      />
+    <div style={{ position: "fixed", inset: 0, zIndex: 0, pointerEvents: "none" }}>
+      <Particles id="tsparticles" options={options} />
     </div>
   );
 }

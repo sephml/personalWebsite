@@ -32,57 +32,74 @@ function ResumeNew() {
   }, []);
 
   return (
-    <div className="relative min-h-screen py-20">
+    <div style={{ position: "relative", minHeight: "100vh" }}>
       <Particle />
-      
-      <div className="container-custom relative z-10">
-        <div className="text-center mb-12 animate-fade-in">
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
+
+      <div className="container-custom" style={{ position: "relative", zIndex: 10, paddingTop: "100px", paddingBottom: "80px" }}>
+        <div style={{ textAlign: "center", marginBottom: "48px" }} className="animate-fade-in">
+          <div className="section-label" style={{ marginBottom: "12px" }}>CV</div>
+          <h1
+            style={{
+              fontSize: "clamp(2.5rem, 6vw, 4rem)",
+              fontWeight: 900,
+              letterSpacing: "-0.02em",
+              color: "#f0f0f0",
+              margin: "0 0 28px",
+              lineHeight: 1.05,
+            }}
+          >
             My <span className="gradient-text">Resume</span>
           </h1>
-          
+
           <a
             href={pdf}
             target="_blank"
             rel="noopener noreferrer"
-            className="btn-primary inline-flex items-center gap-2"
+            className="btn-primary"
+            style={{ display: "inline-flex", alignItems: "center", gap: "8px" }}
           >
-            <AiOutlineDownload className="text-xl" />
+            <AiOutlineDownload style={{ fontSize: "1.1rem" }} />
             Download CV
           </a>
         </div>
 
-        <div ref={containerRef} className="flex flex-col items-center gap-6">
+        <div ref={containerRef} style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "20px" }}>
           <Document
             file={pdf}
             onLoadSuccess={onDocumentLoadSuccess}
-            className="flex flex-col items-center gap-6"
+            style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "20px" }}
           >
             {Array.from(new Array(numPages), (el, index) => (
-              <div 
+              <div
                 key={`page_${index + 1}`}
-                className="glass-effect p-4 rounded-xl shadow-2xl"
+                style={{
+                  background: "#0f0f0f",
+                  border: "1px solid #252525",
+                  borderRadius: "12px",
+                  padding: "16px",
+                  overflow: "hidden",
+                }}
               >
                 <Page
                   pageNumber={index + 1}
                   width={pageWidth}
                   renderAnnotationLayer={false}
                   renderTextLayer={false}
-                  className="rounded-lg overflow-hidden"
                 />
               </div>
             ))}
           </Document>
         </div>
 
-        <div className="text-center mt-12">
+        <div style={{ textAlign: "center", marginTop: "48px" }}>
           <a
             href={pdf}
             target="_blank"
             rel="noopener noreferrer"
-            className="btn-primary inline-flex items-center gap-2"
+            className="btn-primary"
+            style={{ display: "inline-flex", alignItems: "center", gap: "8px" }}
           >
-            <AiOutlineDownload className="text-xl" />
+            <AiOutlineDownload style={{ fontSize: "1.1rem" }} />
             Download CV
           </a>
         </div>

@@ -7,160 +7,272 @@ import search from "../../Assets/Projects/searchengine.png";
 import nlp from "../../Assets/Projects/nlp.jpg";
 import ai_assistant from "../../Assets/Projects/ai_assistant.png";
 import { FaGithub } from "react-icons/fa";
+import { HiExternalLink } from "react-icons/hi";
+
+const projectsData = [
+  {
+    imgPath: ai_assistant,
+    title: "AI Planning Assistant",
+    description:
+      "Intelligent conversational AI assistant improving response accuracy by 40% and reducing query processing time by 2.5×. Built with GPT-4 + Pinecone vectorised retrieval and a LangGraph microservices backend.",
+    ghLink: null,
+    technologies: ["Python", "Flask", "GPT-4", "Pinecone", "LangGraph"],
+    role: "Lead Developer",
+    duration: "3 months",
+  },
+  {
+    imgPath: search,
+    title: "CORD-19 Search Engine",
+    description:
+      "High-performance information retrieval system for COVID-19 research articles. Led a team of 4; BM25 ranking with 85% relevance accuracy, indexing 200k+ papers with sub-second queries.",
+    ghLink: "https://github.com/sephml/IR_search_engine",
+    technologies: ["Python", "Node.js", "SQL", "Docker", "BM25"],
+    role: "Team Lead",
+    duration: "4 months",
+  },
+  {
+    imgPath: nlp,
+    title: "NLP Suite",
+    description:
+      "Neural network solutions for language modeling, machine translation, NER, and coreference resolution. 92% NER accuracy with BERT; 25% translation improvement over LSTM baseline.",
+    ghLink: "https://github.com/sephml/NN_NLP_labs",
+    technologies: ["TensorFlow", "Keras", "BERT", "ELMO", "Attention"],
+    role: "Individual Project",
+    duration: "6 months",
+  },
+  {
+    imgPath: vision,
+    title: "Deep Learning for Computer Vision",
+    description:
+      "Implemented and compared VGG16, GoogLeNet, and ResNet on ImageNet/CIFAR-10. 94% accuracy with 10× GPU speed-up via CUDA; ResNet outperformed VGG16 by 8%.",
+    ghLink: "https://github.com/sephml/image-classification-deep-models",
+    technologies: ["PyTorch", "VGG16", "ResNet", "CUDA", "Python"],
+    role: "Individual Project",
+    duration: "3 months",
+  },
+  {
+    imgPath: frozen,
+    title: "RL – Frozen Lake",
+    description:
+      "Q-learning and SARSA for Frozen Lake with interactive heatmap visualisation. 95% success rate; Q-learning converges 15% faster than SARSA with epsilon-greedy decay.",
+    ghLink: "https://github.com/devasworski/frozen_lake",
+    technologies: ["Q-Learning", "SARSA", "OpenAI Gym", "Python"],
+    role: "Algorithm & Visualisation Lead",
+    duration: "2 months",
+  },
+  {
+    imgPath: mcts,
+    title: "MCTS for Pommerman",
+    description:
+      "Enhanced MCTS with RAVE for the Pommerman multi-agent environment. Top 20% class ranking; parallel tree search cut decision time 40%; custom heuristics improved win rate 30%.",
+    ghLink: null,
+    technologies: ["Java", "MCTS", "RAVE", "Game AI"],
+    role: "Algorithm Designer",
+    duration: "3 months",
+  },
+];
+
+function ProjectCard({ project, index }) {
+  return (
+    <div
+      style={{
+        background: "#0f0f0f",
+        border: "1px solid #252525",
+        borderRadius: "14px",
+        overflow: "hidden",
+        display: "flex",
+        flexDirection: "column",
+        transition: "border-color 0.2s ease, transform 0.2s ease",
+      }}
+      onMouseEnter={(e) => {
+        e.currentTarget.style.borderColor = "rgba(16,185,129,0.3)";
+        e.currentTarget.style.transform = "translateY(-3px)";
+      }}
+      onMouseLeave={(e) => {
+        e.currentTarget.style.borderColor = "#252525";
+        e.currentTarget.style.transform = "translateY(0)";
+      }}
+    >
+      {/* Image */}
+      <div style={{ position: "relative", overflow: "hidden", height: "200px" }}>
+        <img
+          src={project.imgPath}
+          alt={project.title}
+          style={{
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+            transition: "transform 0.4s ease",
+            display: "block",
+          }}
+          onMouseEnter={(e) => { e.currentTarget.style.transform = "scale(1.04)"; }}
+          onMouseLeave={(e) => { e.currentTarget.style.transform = "scale(1)"; }}
+        />
+        <div
+          style={{
+            position: "absolute",
+            inset: 0,
+            background: "linear-gradient(to top, rgba(6,6,6,0.6) 0%, transparent 50%)",
+          }}
+        />
+        {/* Role badge */}
+        <div
+          style={{
+            position: "absolute",
+            top: "12px",
+            right: "12px",
+            background: "rgba(6,6,6,0.85)",
+            border: "1px solid #333333",
+            borderRadius: "6px",
+            padding: "4px 10px",
+            fontSize: "0.7rem",
+            color: "#888888",
+            fontFamily: "'JetBrains Mono', monospace",
+          }}
+        >
+          {project.role}
+        </div>
+      </div>
+
+      {/* Content */}
+      <div style={{ padding: "24px", display: "flex", flexDirection: "column", gap: "14px", flex: 1 }}>
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: "12px" }}>
+          <h2 style={{ fontSize: "1.1rem", fontWeight: 700, color: "#f0f0f0", margin: 0, lineHeight: 1.3 }}>
+            {project.title}
+          </h2>
+          <span
+            style={{
+              fontSize: "0.7rem",
+              color: "#555555",
+              fontFamily: "'JetBrains Mono', monospace",
+              flexShrink: 0,
+              marginTop: "3px",
+            }}
+          >
+            {project.duration}
+          </span>
+        </div>
+
+        <p style={{ color: "#888888", fontSize: "0.875rem", lineHeight: 1.7, margin: 0, flex: 1 }}>
+          {project.description}
+        </p>
+
+        {/* Tech tags */}
+        <div style={{ display: "flex", flexWrap: "wrap", gap: "6px" }}>
+          {project.technologies.map((tech) => (
+            <span
+              key={tech}
+              style={{
+                background: "#161616",
+                border: "1px solid #252525",
+                borderRadius: "5px",
+                padding: "3px 9px",
+                fontSize: "0.7rem",
+                color: "#666666",
+                fontFamily: "'JetBrains Mono', monospace",
+              }}
+            >
+              {tech}
+            </span>
+          ))}
+        </div>
+
+        {/* GitHub link */}
+        {project.ghLink ? (
+          <a
+            href={project.ghLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "8px",
+              padding: "8px 16px",
+              background: "transparent",
+              border: "1px solid #333333",
+              borderRadius: "8px",
+              color: "#888888",
+              fontSize: "0.85rem",
+              fontWeight: 500,
+              textDecoration: "none",
+              transition: "all 0.15s ease",
+              alignSelf: "flex-start",
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.borderColor = "rgba(16,185,129,0.4)";
+              e.currentTarget.style.color = "#10b981";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.borderColor = "#333333";
+              e.currentTarget.style.color = "#888888";
+            }}
+          >
+            <FaGithub style={{ fontSize: "1rem" }} />
+            View on GitHub
+            <HiExternalLink style={{ fontSize: "0.85rem", opacity: 0.6 }} />
+          </a>
+        ) : (
+          <span
+            style={{
+              fontSize: "0.75rem",
+              color: "#555555",
+              fontFamily: "'JetBrains Mono', monospace",
+              padding: "8px 0 0",
+            }}
+          >
+            // private or proprietary
+          </span>
+        )}
+      </div>
+    </div>
+  );
+}
 
 function Projects() {
-  const projectsData = [
-    {
-      imgPath: ai_assistant,
-      title: "AI Planning Assistant",
-      description: "Built an intelligent conversational AI assistant that improved response accuracy by 40% and reduced query processing time by 2.5x. Leveraged OpenAI's GPT-4 API with Pinecone vectorized retrieval for enhanced context understanding. Implemented microservices architecture using Python Flask and LangGraph, with RESTful API endpoints enabling seamless integration across multiple platforms.",
-      ghLink: null,
-      technologies: ["Python", "Flask", "OpenAI GPT-4", "Pinecone", "LangGraph", "Microservices"],
-      role: "Lead Developer",
-      duration: "3 months"
-    },
-    {
-      imgPath: search,
-      title: "CORD COVID-19 Search Engine",
-      description: "Led a team of 4 developers to build a high-performance information retrieval system for COVID-19 research articles. Implemented BM25 ranking algorithm achieving 85% relevance accuracy. Processed and indexed over 200,000 research papers with sub-second query response times. Utilized Docker containerization for seamless deployment and SQL optimization for efficient data retrieval.",
-      ghLink: "https://github.com/sephml/IR_search_engine",
-      technologies: ["Python", "Node.js", "SQL", "Docker", "BM25"],
-      role: "Team Lead",
-      duration: "4 months"
-    },
-    {
-      imgPath: nlp,
-      title: "Natural Language Processing Suite",
-      description: "Developed comprehensive neural network solutions for multiple NLP tasks including language modeling, machine translation, Named Entity Recognition (NER), and coreference resolution. Achieved 92% accuracy on NER tasks using BERT embeddings. Implemented and compared attention-based transformers vs traditional LSTMs, demonstrating 25% improvement in translation quality with attention mechanisms. Built using TensorFlow and Keras with ELMO and BERT embeddings.",
-      ghLink: "https://github.com/sephml/NN_NLP_labs",
-      technologies: ["TensorFlow", "Keras", "ELMO", "BERT", "LSTM", "Attention Mechanisms"],
-      role: "Individual Project",
-      duration: "6 months"
-    },
-    {
-      imgPath: vision,
-      title: "Deep Learning for Computer Vision",
-      description: "Implemented and optimized three state-of-the-art CNN architectures (VGG16, GoogLeNet, ResNet) achieving 94% accuracy on image classification tasks. Conducted comparative analysis demonstrating ResNet's superior performance with 8% accuracy improvement over VGG16. Utilized GPU acceleration with CUDA for 10x faster training times. Trained on ImageNet and CIFAR-10 datasets with extensive hyperparameter tuning.",
-      ghLink: "https://github.com/sephml/image-classification-deep-models",
-      technologies: ["Python", "PyTorch", "VGG16", "GoogLeNet", "ResNet", "CUDA", "GPU Computing"],
-      role: "Individual Project",
-      duration: "3 months"
-    },
-    {
-      imgPath: frozen,
-      title: "Reinforcement Learning - Frozen Lake",
-      description: "Collaborated on implementing Q-learning and SARSA algorithms for the Frozen Lake environment, achieving 95% success rate. Developed an interactive visualization system displaying probability heatmaps and optimal policy decisions for each state. Created comparative analysis demonstrating Q-learning's 15% faster convergence compared to SARSA. Implemented epsilon-greedy exploration strategy with dynamic decay for optimal learning.",
-      ghLink: "https://github.com/devasworski/frozen_lake",
-      technologies: ["Q-Learning", "SARSA", "Reinforcement Learning", "Python", "OpenAI Gym"],
-      role: "Algorithm Developer & Visualization Lead",
-      duration: "2 months"
-    },
-    {
-      imgPath: mcts,
-      title: "Monte Carlo Tree Search for Pommerman",
-      description: "Developed an intelligent game-playing agent using enhanced Monte Carlo Tree Search (MCTS) with RAVE (Rapid Action Value Estimation) for the Pommerman multi-agent environment. Achieved top 20% ranking in class competition through extensive parameter tuning and optimization. Implemented parallel tree search reducing decision time by 40%. Designed custom evaluation heuristics improving win rate by 30% compared to vanilla MCTS.",
-      ghLink: null,
-      technologies: ["Java", "MCTS", "RAVE", "Game AI", "Multi-Agent Systems"],
-      role: "Algorithm Designer",
-      duration: "3 months"
-    }
-  ];
-
   return (
-    <div className="relative min-h-screen py-20">
+    <div style={{ position: "relative", minHeight: "100vh" }}>
       <Particle />
-      
-      <div className="container-custom relative z-10">
-        <div className="text-center mb-16 animate-fade-in">
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
-            My Recent <span className="gradient-text">Projects</span>
+
+      <div className="container-custom" style={{ position: "relative", zIndex: 10, paddingTop: "100px", paddingBottom: "80px" }}>
+        {/* Header */}
+        <div style={{ marginBottom: "60px" }} className="animate-fade-in">
+          <div className="section-label" style={{ marginBottom: "12px" }}>Portfolio</div>
+          <h1
+            style={{
+              fontSize: "clamp(2.5rem, 6vw, 4rem)",
+              fontWeight: 900,
+              letterSpacing: "-0.02em",
+              color: "#f0f0f0",
+              margin: "0 0 14px",
+              lineHeight: 1.05,
+            }}
+          >
+            Selected <span className="gradient-text">Projects</span>
           </h1>
-          <p className="text-lg text-gray-300 max-w-3xl mx-auto mb-4">
-            Here are some of the projects I've worked on, each representing different
-            aspects of my technical journey and interests.
-          </p>
-          <p className="text-lg text-gray-300">
-            Want to collaborate on a project?{" "}
-            <a href="https://www.linkedin.com/in/amirsepehr-aminian/" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-300 font-semibold transition-colors">
-              Let's talk!
+          <p style={{ color: "#888888", maxWidth: "540px", lineHeight: 1.7, margin: 0 }}>
+            A selection of projects spanning LLMs, reinforcement learning, NLP, and computer vision.
+            Want to collaborate?{" "}
+            <a
+              href="https://www.linkedin.com/in/amirsepehr-aminian/"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ color: "#10b981", fontWeight: 500 }}
+            >
+              Let's talk.
             </a>
           </p>
         </div>
 
-        <div className="space-y-20">
+        {/* Project grid */}
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fill, minmax(320px, 1fr))",
+            gap: "16px",
+          }}
+        >
           {projectsData.map((project, index) => (
-            <div
-              key={index}
-              className={`glass-effect p-6 md:p-8 transform hover:scale-[1.02] transition-all duration-300 animate-slide-up`}
-            >
-              <div className={`grid lg:grid-cols-2 gap-8 items-center ${
-                index % 2 === 1 ? "lg:grid-flow-dense" : ""
-              }`}>
-                {/* Image */}
-                <div className={`${index % 2 === 1 ? "lg:col-start-2" : ""}`}>
-                  <div className="relative rounded-xl overflow-hidden group">
-                    <img
-                      src={project.imgPath}
-                      alt={project.title}
-                      className="w-full h-72 object-cover transform group-hover:scale-110 transition-transform duration-500"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  </div>
-                </div>
-
-                {/* Content */}
-                <div className={`space-y-4 ${index % 2 === 1 ? "lg:col-start-1 lg:row-start-1" : ""}`}>
-                  <h2 className="text-3xl md:text-4xl font-bold gradient-text">
-                    {project.title}
-                  </h2>
-
-                  {project.role && (
-                    <div className="flex flex-wrap gap-4 text-sm">
-                  <span className="px-4 py-2 bg-blue-500/20 text-blue-400 rounded-full font-semibold border border-blue-500/30">
-                    Role: {project.role}
-                  </span>
-                  {project.duration && (
-                    <span className="px-4 py-2 bg-teal-500/20 text-teal-400 rounded-full font-semibold border border-teal-500/30">
-                      Duration: {project.duration}
-                    </span>
-                  )}
-                    </div>
-                  )}
-
-                  <p className="text-gray-300 leading-relaxed">
-                    {project.description}
-                  </p>
-
-                  <div>
-                    <h5 className="text-lg font-semibold text-cyan-400 mb-3">
-                      Technologies Used:
-                    </h5>
-                    <div className="flex flex-wrap gap-2">
-                      {project.technologies.map((tech, techIndex) => (
-                        <span
-                          key={techIndex}
-                          className="px-3 py-1 bg-cyan-500/10 text-cyan-300 rounded-lg text-sm border border-cyan-500/30 hover:bg-cyan-500/20 transition-colors"
-                        >
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-
-                  {project.ghLink && (
-                    <a
-                      href={project.ghLink}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-500 to-cyan-500 text-white font-semibold rounded-full hover:shadow-lg hover:shadow-cyan-500/50 transition-all duration-300 transform hover:-translate-y-1"
-                    >
-                      <FaGithub className="text-xl" />
-                      View on GitHub
-                    </a>
-                  )}
-                </div>
-              </div>
-            </div>
+            <ProjectCard key={index} project={project} index={index} />
           ))}
         </div>
       </div>

@@ -1,26 +1,19 @@
-/* Modern App Styles */
+/* Override Bootstrap's white body */
+body {
+  background-color: #060606 !important;
+  color: #f0f0f0 !important;
+}
+
 .App {
   min-height: 100vh;
   position: relative;
 }
 
-#no-scroll {
-  overflow: hidden;
-}
+#no-scroll { overflow: hidden; }
+#scroll { overflow-y: auto; }
 
-#scroll {
-  overflow-y: auto;
-}
-
-/* Wave animation */
 @keyframes wave {
-  0%, 100% {
-    transform: rotate(0deg);
-  }
-  25% {
-    transform: rotate(20deg);
-  }
-  75% {
-    transform: rotate(-15deg);
-  }
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(20deg); }
+  75% { transform: rotate(-15deg); }
 }

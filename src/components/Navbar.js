@@ -4,11 +4,18 @@ import {
   AiOutlineHome,
   AiOutlineFundProjectionScreen,
   AiOutlineUser,
-  AiFillLock,
 } from "react-icons/ai";
 import { CgFileDocument } from "react-icons/cg";
 import { MdWorkOutline } from "react-icons/md";
 import { HiMenuAlt3, HiX } from "react-icons/hi";
+
+const navItems = [
+  { name: "Home", path: "/", icon: AiOutlineHome },
+  { name: "About", path: "/about", icon: AiOutlineUser },
+  { name: "Experience", path: "/experience", icon: MdWorkOutline },
+  { name: "Projects", path: "/project", icon: AiOutlineFundProjectionScreen },
+  { name: "Resume", path: "/resume", icon: CgFileDocument },
+];
 
 function NavBar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -16,101 +23,141 @@ function NavBar() {
   const location = useLocation();
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
-    };
-
+    const handleScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  useEffect(() => {
-    setIsOpen(false);
-  }, [location]);
-
-  const navItems = [
-    { name: "Home", path: "/", icon: AiOutlineHome },
-    { name: "About", path: "/about", icon: AiOutlineUser },
-    { name: "Experience", path: "/experience", icon: MdWorkOutline },
-    { name: "Projects", path: "/project", icon: AiOutlineFundProjectionScreen },
-    { name: "Resume", path: "/resume", icon: CgFileDocument },
-    { name: "Private", path: "/private", icon: AiFillLock },
-  ];
+  useEffect(() => { setIsOpen(false); }, [location]);
 
   const isActive = (path) => location.pathname === path;
 
   return (
     <nav
-      className={`fixed w-full top-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? "bg-slate-900/95 backdrop-blur-md shadow-lg shadow-slate-900/50"
-          : "bg-transparent"
-      }`}
+      style={{
+        position: "fixed",
+        top: 0,
+        left: 0,
+        right: 0,
+        zIndex: 50,
+        borderBottom: scrolled ? "1px solid #252525" : "1px solid transparent",
+        background: scrolled ? "rgba(6,6,6,0.9)" : "transparent",
+        backdropFilter: scrolled ? "blur(12px)" : "none",
+        transition: "all 0.3s ease",
+      }}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-20">
+      <div className="container-custom">
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", height: "68px" }}>
           {/* Logo */}
           <Link
             to="/"
-            className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-500 hover:from-blue-300 hover:to-purple-400 transition-all duration-300"
+            style={{
+              fontFamily: "'JetBrains Mono', monospace",
+              fontWeight: 600,
+              fontSize: "1.1rem",
+              color: "#10b981",
+              letterSpacing: "0.02em",
+              textDecoration: "none",
+            }}
           >
-            Sep Aminian
+            sep.aminian
           </Link>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-1">
+          {/* Desktop nav */}
+          <div className="hidden md:flex items-center" style={{ gap: "4px" }}>
             {navItems.map((item) => {
               const Icon = item.icon;
               return (
                 <Link
                   key={item.path}
                   to={item.path}
-                  className={`flex items-center space-x-2 px-4 py-2 rounded-lg font-medium transition-all duration-300 ${
-                    isActive(item.path)
-                      ? "text-white bg-gradient-to-r from-blue-500 to-purple-600"
-                      : "text-gray-300 hover:text-white hover:bg-white/10"
-                  }`}
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "6px",
+                    padding: "6px 14px",
+                    borderRadius: "8px",
+                    fontSize: "0.875rem",
+                    fontWeight: isActive(item.path) ? 600 : 400,
+                    color: isActive(item.path) ? "#10b981" : "#888888",
+                    background: isActive(item.path) ? "rgba(16,185,129,0.08)" : "transparent",
+                    border: isActive(item.path) ? "1px solid rgba(16,185,129,0.2)" : "1px solid transparent",
+                    transition: "all 0.15s ease",
+                    textDecoration: "none",
+                  }}
+                  onMouseEnter={(e) => {
+                    if (!isActive(item.path)) {
+                      e.currentTarget.style.color = "#f0f0f0";
+                      e.currentTarget.style.background = "#161616";
+                    }
+                  }}
+                  onMouseLeave={(e) => {
+                    if (!isActive(item.path)) {
+                      e.currentTarget.style.color = "#888888";
+                      e.currentTarget.style.background = "transparent";
+                    }
+                  }}
                 >
-                  <Icon className="text-lg" />
-                  <span>{item.name}</span>
+                  <Icon style={{ fontSize: "0.95rem" }} />
+                  {item.name}
                 </Link>
               );
             })}
           </div>
 
-          {/* Mobile Menu Button */}
+          {/* Mobile toggle */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden text-white text-3xl focus:outline-none hover:text-blue-400 transition-colors"
+            className="md:hidden"
+            style={{
+              background: "none",
+              border: "none",
+              color: "#f0f0f0",
+              fontSize: "1.5rem",
+              cursor: "pointer",
+              padding: "4px",
+            }}
           >
             {isOpen ? <HiX /> : <HiMenuAlt3 />}
           </button>
         </div>
       </div>
 
-      {/* Mobile Navigation */}
+      {/* Mobile menu */}
       <div
-        className={`md:hidden transition-all duration-300 ease-in-out ${
-          isOpen
-            ? "max-h-screen opacity-100"
-            : "max-h-0 opacity-0 overflow-hidden"
-        }`}
+        className="md:hidden"
+        style={{
+          maxHeight: isOpen ? "500px" : "0",
+          overflow: "hidden",
+          transition: "max-height 0.3s ease",
+          borderTop: isOpen ? "1px solid #252525" : "none",
+          background: "rgba(6,6,6,0.97)",
+        }}
       >
-        <div className="px-4 pt-2 pb-6 space-y-2 bg-slate-900/98 backdrop-blur-md shadow-2xl">
+        <div style={{ padding: "12px 16px 20px" }}>
           {navItems.map((item) => {
             const Icon = item.icon;
             return (
               <Link
                 key={item.path}
                 to={item.path}
-                className={`flex items-center space-x-3 px-4 py-3 rounded-lg font-medium transition-all duration-300 ${
-                  isActive(item.path)
-                    ? "text-white bg-gradient-to-r from-blue-500 to-purple-600"
-                    : "text-gray-300 hover:text-white hover:bg-white/10"
-                }`}
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "10px",
+                  padding: "10px 12px",
+                  borderRadius: "8px",
+                  fontSize: "0.9rem",
+                  fontWeight: isActive(item.path) ? 600 : 400,
+                  color: isActive(item.path) ? "#10b981" : "#888888",
+                  background: isActive(item.path) ? "rgba(16,185,129,0.08)" : "transparent",
+                  marginBottom: "4px",
+                  textDecoration: "none",
+                  transition: "all 0.15s ease",
+                }}
               >
-                <Icon className="text-xl" />
-                <span>{item.name}</span>
+                <Icon />
+                {item.name}
               </Link>
             );
           })}

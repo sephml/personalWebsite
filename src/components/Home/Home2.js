@@ -6,105 +6,150 @@ import { FaLinkedinIn } from "react-icons/fa";
 
 function Home2() {
   return (
-    <div className="relative py-20 md:py-32 z-10">
-      <div className="container-custom">
-        <div className="grid lg:grid-cols-5 gap-12 items-center">
-          {/* Text Content */}
-          <div className="lg:col-span-3 space-y-6 animate-slide-up">
-            <h2 className="text-4xl md:text-5xl font-bold text-white">
-              LET ME <span className="gradient-text">INTRODUCE</span> MYSELF
+    <div
+      style={{
+        borderTop: "1px solid #252525",
+        position: "relative",
+        zIndex: 10,
+      }}
+    >
+      <div className="container-custom" style={{ padding: "80px 16px" }}>
+
+        <div
+          style={{
+            display: "grid",
+            gap: "60px",
+            alignItems: "center",
+          }}
+          className="lg:grid-cols-[1fr_300px]"
+        >
+          {/* Text */}
+          <div className="animate-fade-in" style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
+            <div className="section-label">About me</div>
+
+            <h2
+              style={{
+                fontSize: "clamp(2rem, 4vw, 3rem)",
+                fontWeight: 800,
+                letterSpacing: "-0.02em",
+                color: "#f0f0f0",
+                margin: 0,
+                lineHeight: 1.1,
+              }}
+            >
+              Let me <span className="gradient-text">introduce</span> myself
             </h2>
-            
-            <div className="space-y-4 text-lg text-gray-300 leading-relaxed">
-              <p>
-                I'm passionate about building intelligent systems that solve real-world problems. 
+
+            <div style={{ display: "flex", flexDirection: "column", gap: "16px", color: "#888888", fontSize: "1.05rem", lineHeight: 1.75 }}>
+              <p style={{ margin: 0 }}>
+                I'm passionate about building intelligent systems that solve real-world problems.
                 With expertise in{" "}
-                <span className="text-cyan-400 font-semibold">Large Language Models</span>{" "}
-                and deep learning, I transform cutting-edge AI research into production-ready solutions.
+                <span style={{ color: "#f0f0f0", fontWeight: 500 }}>Large Language Models</span>
+                {" "}and deep learning, I transform cutting-edge AI research into production-ready solutions.
               </p>
-              
-              <p>
-                I'm fluent in programming languages like{" "}
-                <span className="text-cyan-400 font-semibold">Python, C++, and JavaScript</span>, 
-                with a strong foundation in modern ML/AI frameworks.
+              <p style={{ margin: 0 }}>
+                Fluent in{" "}
+                <span style={{ color: "#f0f0f0", fontWeight: 500 }}>Python, C++, and JavaScript</span>
+                , with a strong foundation in modern ML/AI frameworks - PyTorch, TensorFlow, and the broader HuggingFace ecosystem.
               </p>
-              
-              <p>
-                My primary focus is building innovative{" "}
-                <span className="text-cyan-400 font-semibold">ML models</span>{" "}
-                and conducting research, particularly in the field of{" "}
-                <span className="text-cyan-400 font-semibold">Large Language Models</span>{" "}
-                and their practical applications.
-              </p>
-              
-              <p>
+              <p style={{ margin: 0 }}>
                 Beyond coding, I enjoy{" "}
-                <span className="text-cyan-400 font-semibold">exploring startup ideas</span>, 
-                traveling, and gaming to unwind and stay creative.
+                <span style={{ color: "#f0f0f0", fontWeight: 500 }}>exploring startup ideas</span>
+                , travelling, and gaming to stay creative.
               </p>
+            </div>
+
+            {/* Social links */}
+            <div style={{ display: "flex", gap: "12px", paddingTop: "8px" }}>
+              <a
+                href="https://github.com/sephml"
+                target="_blank"
+                rel="noreferrer"
+                style={{
+                  width: "44px",
+                  height: "44px",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  borderRadius: "10px",
+                  border: "1px solid #252525",
+                  background: "#0f0f0f",
+                  color: "#888888",
+                  fontSize: "1.25rem",
+                  transition: "all 0.2s ease",
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.color = "#f0f0f0";
+                  e.currentTarget.style.borderColor = "#333333";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.color = "#888888";
+                  e.currentTarget.style.borderColor = "#252525";
+                }}
+              >
+                <AiFillGithub />
+              </a>
+              <a
+                href="https://www.linkedin.com/in/amirsepehr-aminian/"
+                target="_blank"
+                rel="noreferrer"
+                style={{
+                  width: "44px",
+                  height: "44px",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  borderRadius: "10px",
+                  border: "1px solid #252525",
+                  background: "#0f0f0f",
+                  color: "#888888",
+                  fontSize: "1.15rem",
+                  transition: "all 0.2s ease",
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.color = "#10b981";
+                  e.currentTarget.style.borderColor = "rgba(16,185,129,0.3)";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.color = "#888888";
+                  e.currentTarget.style.borderColor = "#252525";
+                }}
+              >
+                <FaLinkedinIn />
+              </a>
             </div>
           </div>
 
-          {/* Avatar Image */}
-          <div className="lg:col-span-2 flex justify-center">
-            <Tilt>
-              <div className="w-64 h-64 lg:w-80 lg:h-80">
-                <img 
-                  src={myImg} 
-                  alt="avatar" 
-                  className="w-full h-full object-contain drop-shadow-2xl"
+          {/* Avatar */}
+          <div
+            className="animate-float"
+            style={{ display: "flex", justifyContent: "center" }}
+          >
+            <Tilt tiltMaxAngleX={8} tiltMaxAngleY={8}>
+              <div
+                style={{
+                  width: "260px",
+                  height: "260px",
+                  borderRadius: "20px",
+                  border: "1px solid #252525",
+                  background: "#0f0f0f",
+                  overflow: "hidden",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  padding: "24px",
+                  transition: "border-color 0.2s",
+                }}
+                onMouseEnter={(e) => { e.currentTarget.style.borderColor = "rgba(16,185,129,0.3)"; }}
+                onMouseLeave={(e) => { e.currentTarget.style.borderColor = "#252525"; }}
+              >
+                <img
+                  src={myImg}
+                  alt="avatar"
+                  style={{ width: "100%", height: "100%", objectFit: "contain" }}
                 />
               </div>
             </Tilt>
-          </div>
-        </div>
-
-        {/* Social Connect Section */}
-        <div className="mt-20 text-center space-y-8">
-          <h2 className="text-3xl md:text-4xl font-bold text-white">
-            LET'S CONNECT
-          </h2>
-          
-          <p className="text-lg text-gray-300">
-            Feel free to{" "}
-            <span className="text-cyan-400 font-semibold">reach out</span>{" "}
-            for collaborations or opportunities
-          </p>
-
-          <div className="flex flex-wrap justify-center gap-4">
-            <a
-              href="https://www.linkedin.com/in/amirsepehr-aminian/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-primary"
-            >
-              Get In Touch
-            </a>
-            <a
-              href="/project"
-              className="btn-secondary"
-            >
-              View My Work
-            </a>
-          </div>
-
-          <div className="flex justify-center gap-6 pt-4">
-            <a
-              href="https://github.com/sephml"
-              target="_blank"
-              rel="noreferrer"
-              className="w-14 h-14 flex items-center justify-center rounded-full bg-white/10 hover:bg-gradient-to-r hover:from-blue-500 hover:to-cyan-500 transition-all duration-300 transform hover:scale-110 hover:shadow-lg hover:shadow-cyan-500/50"
-            >
-              <AiFillGithub className="text-2xl text-white" />
-            </a>
-            <a
-              href="https://www.linkedin.com/in/amirsepehr-aminian/"
-              target="_blank"
-              rel="noreferrer"
-              className="w-14 h-14 flex items-center justify-center rounded-full bg-white/10 hover:bg-gradient-to-r hover:from-blue-500 hover:to-cyan-500 transition-all duration-300 transform hover:scale-110 hover:shadow-lg hover:shadow-cyan-500/50"
-            >
-              <FaLinkedinIn className="text-2xl text-white" />
-            </a>
           </div>
         </div>
       </div>

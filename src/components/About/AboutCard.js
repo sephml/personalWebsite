@@ -1,44 +1,63 @@
 import React from "react";
-import { ImPointRight } from "react-icons/im";
+
+const Bullet = ({ text }) => (
+  <li style={{ display: "flex", alignItems: "flex-start", gap: "10px", listStyle: "none" }}>
+    <span
+      style={{
+        width: "6px",
+        height: "6px",
+        borderRadius: "50%",
+        background: "#10b981",
+        marginTop: "9px",
+        flexShrink: 0,
+      }}
+    />
+    <span style={{ color: "#888888", fontSize: "1rem", lineHeight: 1.7 }}>{text}</span>
+  </li>
+);
 
 function AboutCard() {
   return (
-    <div className="glass-effect p-8 space-y-6">
-      <div className="space-y-4 text-gray-300 leading-relaxed">
-        <p>
-          Hi, I'm <span className="text-cyan-400 font-semibold">Sep</span>, 
-          originally from <span className="text-cyan-400 font-semibold">Tehran</span>{" "}
-          and currently based in <span className="text-cyan-400 font-semibold">London, UK</span>.
+    <div
+      style={{
+        background: "#0f0f0f",
+        border: "1px solid #252525",
+        borderRadius: "14px",
+        padding: "32px",
+        display: "flex",
+        flexDirection: "column",
+        gap: "20px",
+      }}
+    >
+      <p style={{ margin: 0, color: "#888888", fontSize: "1.05rem", lineHeight: 1.75 }}>
+        Hi, I'm{" "}
+        <span style={{ color: "#f0f0f0", fontWeight: 600 }}>Sep</span>
+        , originally from{" "}
+        <span style={{ color: "#f0f0f0", fontWeight: 600 }}>Tehran</span>
+        {" "}and currently based in{" "}
+        <span style={{ color: "#f0f0f0", fontWeight: 600 }}>London, UK</span>
+        .
+      </p>
+
+      <p style={{ margin: 0, color: "#888888", fontSize: "1.05rem", lineHeight: 1.75 }}>
+        I hold an MSc in Artificial Intelligence from Queen Mary University of London (Distinction),
+        where I developed a deep passion for machine learning and AI systems.
+      </p>
+
+      <p style={{ margin: 0, color: "#888888", fontSize: "1.05rem", lineHeight: 1.75 }}>
+        As a Machine Learning Engineer, I specialise in building production-ready AI solutions
+        with a focus on Large Language Models and their practical applications - transforming
+        research concepts into scalable, real-world products.
+      </p>
+
+      <div>
+        <p style={{ margin: "0 0 12px", fontWeight: 600, color: "#f0f0f0", fontSize: "0.9rem" }}>
+          When I'm not coding:
         </p>
-        
-        <p>
-          I hold an MSc. in Artificial Intelligence from Queen Mary University of London, 
-          where I developed a deep passion for machine learning and AI systems.
-        </p>
-        
-        <p>
-          As a Machine Learning Engineer, I specialise in building production-ready AI solutions, 
-          with a particular focus on Large Language Models and their practical applications. 
-          I love the challenge of transforming research concepts into scalable, real-world products.
-        </p>
-        
-        <p className="pt-4 font-semibold text-white">
-          When I'm not coding, I enjoy:
-        </p>
-        
-        <ul className="space-y-3 text-gray-300">
-          <li className="flex items-center gap-3">
-            <ImPointRight className="text-cyan-400 text-lg flex-shrink-0" />
-            <span>Playing video games</span>
-          </li>
-          <li className="flex items-center gap-3">
-            <ImPointRight className="text-cyan-400 text-lg flex-shrink-0" />
-            <span>Running</span>
-          </li>
-          <li className="flex items-center gap-3">
-            <ImPointRight className="text-cyan-400 text-lg flex-shrink-0" />
-            <span>Watching series</span>
-          </li>
+        <ul style={{ margin: 0, padding: 0, display: "flex", flexDirection: "column", gap: "6px" }}>
+          <Bullet text="Playing video games" />
+          <Bullet text="Running" />
+          <Bullet text="Watching series" />
         </ul>
       </div>
     </div>

@@ -7,26 +7,53 @@ import {
 import { FaAws } from "react-icons/fa";
 import { VscAzure } from "react-icons/vsc";
 
-function Toolstack() {
-  const tools = [
-    { component: SiWindows, name: "Windows" },
-    { component: SiLinux, name: "Linux" },
-    { component: SiVisualstudiocode, name: "VS Code" },
-    { component: FaAws, name: "AWS" },
-    { component: VscAzure, name: "Azure" },
-  ];
+const tools = [
+  { component: SiWindows, name: "Windows" },
+  { component: SiLinux, name: "Linux" },
+  { component: SiVisualstudiocode, name: "VS Code" },
+  { component: FaAws, name: "AWS" },
+  { component: VscAzure, name: "Azure" },
+];
 
+function Toolstack() {
   return (
-    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
+    <div
+      style={{
+        display: "grid",
+        gridTemplateColumns: "repeat(auto-fill, minmax(110px, 1fr))",
+        gap: "8px",
+      }}
+    >
       {tools.map(({ component: Tool, name }) => (
         <div
           key={name}
-          className="glass-effect p-8 flex flex-col items-center justify-center gap-3 hover:scale-110 hover:shadow-lg hover:shadow-cyan-500/30 transition-all duration-300 group"
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            gap: "10px",
+            padding: "22px 14px",
+            background: "#161616",
+            border: "1px solid #252525",
+            borderRadius: "10px",
+            transition: "all 0.2s ease",
+            cursor: "default",
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.borderColor = "rgba(16,185,129,0.3)";
+            e.currentTarget.style.background = "#1a1a1a";
+            e.currentTarget.querySelector("svg").style.color = "#10b981";
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.borderColor = "#252525";
+            e.currentTarget.style.background = "#161616";
+            e.currentTarget.querySelector("svg").style.color = "#555555";
+          }}
         >
-          <Tool className="text-5xl text-blue-400 group-hover:text-cyan-400 transition-colors duration-300" />
-          <p className="text-sm text-gray-300 font-medium text-center">
+          <Tool style={{ fontSize: "2rem", color: "#555555", transition: "color 0.2s" }} />
+          <span style={{ fontSize: "0.75rem", color: "#666666", fontWeight: 500, fontFamily: "'JetBrains Mono', monospace" }}>
             {name}
-          </p>
+          </span>
         </div>
       ))}
     </div>
