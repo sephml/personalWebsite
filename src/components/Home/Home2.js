@@ -1,5 +1,5 @@
 import React from "react";
-import myImg from "../../Assets/avatar.svg";
+import myImg from "../../Assets/sep.png";
 import Tilt from "react-parallax-tilt";
 import { AiFillGithub } from "react-icons/ai";
 import { FaLinkedinIn } from "react-icons/fa";
@@ -146,7 +146,12 @@ function Home2() {
                 <img
                   src={myImg}
                   alt="avatar"
-                  style={{ width: "100%", height: "100%", objectFit: "contain" }}
+                  style={{
+                    width: "210px",
+                    height: "210px",
+                    objectFit: "cover",
+                    clipPath: "circle(48% at 50% 50%)",
+                  }}
                 />
               </div>
             </Tilt>
